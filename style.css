@@ -1,0 +1,247 @@
+
+* {
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+body {
+  margin: 0;
+  background: #f6eee8;
+  color: #333;
+}
+
+/* HEADER  */
+header {
+  padding: 120px 20px; 
+  text-align: center;
+  color: #ffffff;
+  background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1350&q=80');
+  background-size: cover;       
+  background-position: center;  
+  background-attachment: fixed; 
+  position: relative;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
+}
+
+header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  margin: 0 0 15px 0;
+  font-weight: 400;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+  letter-spacing: 1px;
+}
+
+header p {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 300;
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.6;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
+  opacity: 0.95;
+}
+
+/* GRID */
+#lista-presentes {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: start; 
+}
+
+/* CARD */
+.card {
+  background: #fff;
+  border-radius: 22px;
+  padding: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  text-align: center;
+  transition: transform 0.2s ease;
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+}
+
+/* IMAGEM PADRÃO */
+.card img {
+  width: 100%;
+  height: 180px;
+  object-fit: contain;      
+  background: #fafafa;
+  border-radius: 16px;
+  margin-bottom: 16px;
+}
+
+/* TEXTOS */
+.card h3 {
+  font-size: 17px;
+  margin: 8px 0;
+}
+
+.card .descricao {
+  font-size: 14px;
+  color: #777;
+  margin-bottom: 8px;
+}
+
+.card .preco {
+  font-size: 20px;
+  font-weight: 600;
+  color: #000000;
+  margin-bottom: 0;
+}
+
+/* BOTÃO PRINCIPAL*/
+.btn-acao {
+  width: 100%;
+  padding: 14px; 
+  margin-top: 20px;
+  background: #052099;
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  font-size: 15px;
+  transition: background 0.2s ease, transform 0.1s ease;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-acao:hover {
+  background: #047a31;
+}
+
+.btn-acao:active {
+  transform: scale(0.97);
+}
+
+/* PROGRESSO */
+.progress {
+  height: 6px;
+  background: #eee;
+  border-radius: 999px;
+  margin-top: 14px;
+  overflow: hidden;
+}
+
+.bar {
+  height: 100%;
+  background: #d4a373;
+}
+
+/* ÁREA EXPANDIDA */
+.contribuicao {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease-in-out, opacity 0.3s ease;
+  opacity: 0;
+  padding-top: 0;
+  text-align: left;
+}
+
+/* QUANDO ABERTO */
+.card.aberto .contribuicao {
+  max-height: 1500px; /* Altura suficiente para tudo */
+  opacity: 1;
+}
+
+.contribuicao label {
+  font-size: 13px;
+  margin-bottom: 4px;
+  display: block;
+  margin-top: 10px;
+  color: #666;
+}
+
+.contribuicao input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  outline: none;
+}
+
+.contribuicao input:focus {
+  border-color: #052099;
+}
+
+/* QR CODE E PIX */
+.qr-code {
+  width: 160px;
+  height: 160px;
+  display: block;
+  margin: 10px auto;
+  border: 1px solid #eee;
+  padding: 5px;
+  border-radius: 8px;
+}
+
+.pix-info {
+  font-size: 13px;
+  color: #555;
+  text-align: center;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+/* Botão Copiar Pix */
+.btn-copiar-pix {
+  transition: background 0.3s ease;
+}
+.btn-copiar-pix:hover {
+  opacity: 0.9;
+}
+
+/* ITEM ESGOTADO  */
+.card.esgotado {
+  opacity: 0.6;              
+  filter: grayscale(100%);   
+  transition: all 0.3s ease;
+}
+
+.card.esgotado .btn-acao {
+  background-color: #ccc !important;
+  color: #666 !important;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.card.esgotado:hover {
+  transform: none;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08); 
+}
+
+/* DESTAQUE (LUA DE MEL) */
+.card-destaque {
+  border: 2px solid #d4a373;      
+  background: #fffdf5;            
+  position: relative;              
+  box-shadow: 0 10px 40px rgba(212, 163, 115, 0.25); 
+  transform: scale(1.02);        
+}
+
+/* Tira o efeito de aumentar no hover */
+.card-destaque:hover {
+  transform: scale(1.02); 
+}
+
+/* Muda a cor do botão APENAS desse card para Dourado */
+.card-destaque .btn-acao {
+  background: #d4a373;
+  color: #fff;
+}
+
+.card-destaque .btn-acao:hover {
+  background: #b08151; 
+}
+
+/* Destaque no preço */
+.card-destaque .preco span {
+  color: #d4a373 !important; /* Força a cor do texto ser dourada */
+}

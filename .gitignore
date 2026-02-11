@@ -1,0 +1,10 @@
+# Ignorar dependências de sistema
+.DS_Store
+Thumbs.db
+
+# Ignorar arquivo de configuração REAL
+config.js
+
+# Ignorar pastas de dependências (caso use npm no futuro)
+node_modules/
+.vercel/
