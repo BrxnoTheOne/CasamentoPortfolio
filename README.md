@@ -2,8 +2,6 @@
 
 > Um sistema de lista de presentes real, focado em alta conversão via Pix, zero taxas de intermediários e lógica de fracionamento de itens caros (Crowdfunding).
 
-![Preview do Projeto](<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/6350b968-58ad-45c2-93fb-9bc0a3751553" />
-)
 
 ## 📖 Sobre o Projeto
 
