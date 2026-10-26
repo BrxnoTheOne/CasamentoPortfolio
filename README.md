@@ -1,18 +1,19 @@
 # 💍 Lista de Casamento Serverless (Pix & Cotas)
 
-> Um sistema de lista de presentes real, focado em alta conversão via Pix, zero taxas de intermediários e lógica de fracionamento de itens caros (Crowdfunding).
+> Um sistema de lista de presentes real, focado em alta conversão via Pix, zero taxas de intermediários e lógica de fracionamento de itens caros.
 
 
 ## 📖 Sobre o Projeto
 
 Este projeto nasceu de uma necessidade real: **fugir das taxas abusivas (4% a 6%)** cobradas pelos sites tradicionais de lista de casamento (iCasei, Casar.com, etc).
 
-O objetivo foi criar uma **Single Page Application (SPA)** leve, onde os convidados pudessem visualizar os presentes, escolher "fatias" (cotas) de itens caros (como uma Lua de Mel ou Geladeira) e realizar o pagamento via Pix direto para a conta do casal, garantindo que 100% do valor fosse aproveitado.
+O objetivo foi criar uma **Single Page Application** leve, onde os convidados pudessem visualizar os presentes, escolher "fatias" (cotas) de itens caros (como uma Lua de Mel ou Geladeira) e realizar o pagamento via Pix direto para a conta do casal, garantindo que 100% do valor fosse aproveitado.
 
 ### 🎯 Resultados Reais
 -   **Economia:** 0% de taxas de transação.
 -   **Performance:** Carregamento instantâneo (Vanilla JS + Supabase).
 -   **Experiência:** Checkout simplificado em 2 cliques (Copia e Cola Pix).
+-   **Resultado:** Arrecadados somente dentro do site R$500 durante os preparativos.
 
 ---
 
@@ -32,15 +33,14 @@ O objetivo foi criar uma **Single Page Application (SPA)** leve, onde os convida
 O projeto segue a filosofia **KISS (Keep It Simple, Stupid)**. Evitei frameworks complexos para garantir manutenção fácil e custo zero de hospedagem.
 
 -   **Frontend:**
-    -   HTML5 Semântico
+    -   HTML5 
     -   CSS3 (Grid Layout, Clamp para tipografia fluida, Variáveis CSS)
     -   JavaScript (ES6 Modules, Async/Await)
 -   **Backend (BaaS):**
     -   **Supabase (PostgreSQL):** Banco de dados relacional e API RESTful instantânea.
 -   **Integrações:**
     -   API de QR Code (GoQR/QRServer)
-    -   API de IP (Ipify para log de segurança simples)
-
+    -   
 ---
 
 ## 💡 História e Decisões Técnicas (Processo de Criação)
