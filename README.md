@@ -1,89 +1,89 @@
-# 💍 Lista de Casamento Serverless (Pix & Cotas)
+# 💍 Serverless Wedding Registry (Pix & Shares)
 
-> Um sistema de lista de presentes real, focado em alta conversão via Pix, zero taxas de intermediários e lógica de fracionamento de itens caros.
+> A real gift registry system, focused on high conversion via Pix, zero intermediary fees, and logic for splitting expensive items into shares.
 
 
-## 📖 Sobre o Projeto
+## 📖 About the Project
 
-Este projeto nasceu de uma necessidade real: **fugir das taxas abusivas (4% a 6%)** cobradas pelos sites tradicionais de lista de casamento (iCasei, Casar.com, etc).
+This project was born from a real need: **to avoid the abusive fees (4% to 6%)** charged by traditional wedding registry sites (iCasei, Casar.com, etc).
 
-O objetivo foi criar uma **Single Page Application** leve, onde os convidados pudessem visualizar os presentes, escolher "fatias" (cotas) de itens caros (como uma Lua de Mel ou Geladeira) e realizar o pagamento via Pix direto para a conta do casal, garantindo que 100% do valor fosse aproveitado.
+The goal was to create a lightweight **Single Page Application** where guests could view the gifts, choose "slices" (shares) of expensive items (such as a Honeymoon or a Refrigerator), and make the payment via Pix directly to the couple's account, ensuring that 100% of the amount was put to use.
 
-### 🎯 Resultados Reais
--   **Economia:** 0% de taxas de transação.
--   **Performance:** Carregamento instantâneo (Vanilla JS + Supabase).
--   **Experiência:** Checkout simplificado em 2 cliques (Copia e Cola Pix).
--   **Resultado:** Arrecadados somente dentro do site R$500 durante os preparativos.
-
----
-
-## 🚀 Funcionalidades Principais
-
--   **📦 Sistema de Cotas (Crowdfunding):** Itens de alto valor são divididos em frações. O convidado compra 1 cota e vê a barra de progresso avançar em tempo real.
--   **🔄 Lógica de Multiplicação:** Para itens baratos (ex: Toalhas), o sistema inverte a lógica, agrupando várias unidades em um único card de "meta".
--   **💸 Pagamento via Pix:** Geração automática de Payload Pix e QR Code dinâmico usando API externa.
--   **🔒 Segurança de API:** Arquitetura de separação de credenciais (Config Pattern) para proteger chaves de API no Frontend.
--   **📱 Design Responsivo:** Interface Mobile-First utilizando CSS Grid e Flexbox.
--   **⏳ Conteúdo Temporal:** Lógica de "Time-gating" para revelar o card da Lua de Mel apenas próximo à data do evento.
+### 🎯 Real Results
+-   **Savings:** 0% transaction fees.
+-   **Performance:** Instant loading (Vanilla JS + Supabase).
+-   **Experience:** Simplified checkout in 2 clicks (Pix Copy and Paste).
+-   **Result:** R$500 raised through the site alone during the preparations.
 
 ---
 
-## 🛠 Tecnologias Utilizadas
+## 🚀 Main Features
 
-O projeto segue a filosofia **KISS (Keep It Simple, Stupid)**. Evitei frameworks complexos para garantir manutenção fácil e custo zero de hospedagem.
+-   **📦 Share System (Crowdfunding):** High-value items are divided into fractions. The guest buys 1 share and sees the progress bar advance in real time.
+-   **🔄 Multiplication Logic:** For cheap items (e.g., Towels), the system inverts the logic, grouping several units into a single "goal" card.
+-   **💸 Payment via Pix:** Automatic generation of the Pix Payload and dynamic QR Code using an external API.
+-   **🔒 API Security:** Credential separation architecture (Config Pattern) to protect API keys on the Frontend.
+-   **📱 Responsive Design:** Mobile-First interface using CSS Grid and Flexbox.
+-   **⏳ Temporal Content:** "Time-gating" logic to reveal the Honeymoon card only close to the event date.
+
+---
+
+## 🛠 Technologies Used
+
+The project follows the **KISS (Keep It Simple, Stupid)** philosophy. I avoided complex frameworks to ensure easy maintenance and zero hosting cost.
 
 -   **Frontend:**
     -   HTML5 
-    -   CSS3 (Grid Layout, Clamp para tipografia fluida, Variáveis CSS)
+    -   CSS3 (Grid Layout, Clamp for fluid typography, CSS Variables)
     -   JavaScript (ES6 Modules, Async/Await)
 -   **Backend (BaaS):**
-    -   **Supabase (PostgreSQL):** Banco de dados relacional e API RESTful instantânea.
--   **Integrações:**
-    -   API de QR Code (GoQR/QRServer)
+    -   **Supabase (PostgreSQL):** Relational database and instant RESTful API.
+-   **Integrations:**
+    -   QR Code API (GoQR/QRServer)
     -   
 ---
 
-## 💡 História e Decisões Técnicas (Processo de Criação)
+## 💡 Story and Technical Decisions (Creation Process)
 
-Durante o desenvolvimento, enfrentei três desafios principais que ditaram a arquitetura do projeto:
+During development, I faced three main challenges that dictated the project's architecture:
 
-### 1. O Dilema dos Itens Caros
-**Problema:** Nenhum convidado daria, sozinho, um sofá de R$ 2.500,00.
-**Solução:** Implementei uma lógica de **Cotas**.
--   *No Banco:* Defino `total_cotas = 10` e `preco = 2500`.
--   *No Frontend:* O JS calcula `Preço da Cota = Preço Total / Total de Cotas` e renderiza uma barra de progresso baseada em `(vendidas / total) * 100%`.
+### 1. The Expensive Items Dilemma
+**Problem:** No guest would give, on their own, a R$ 2,500.00 sofa.
+**Solution:** I implemented a **Shares** logic.
+-   *In the Database:* I set `total_cotas = 10` and `preco = 2500`.
+-   *On the Frontend:* The JS calculates `Share Price = Total Price / Total Shares` and renders a progress bar based on `(sold / total) * 100%`.
 
-### 2. O Problema do Cartão de Crédito
-**Problema:** Integrar Stripe ou MercadoPago traria taxas de ~5% e retenção do dinheiro por 14 dias (D+14).
-**Solução:** Focar 100% no **Pix**.
--   Criei um gerador de Payload estático. O convidado copia o código, paga no banco dele e informa no site.
--   *Trade-off:* A confirmação não é automática (webhook), mas a economia de taxas compensa a validação manual.
+### 2. The Credit Card Problem
+**Problem:** Integrating Stripe or MercadoPago would bring fees of ~5% and retention of the money for 14 days (D+14).
+**Solution:** Focus 100% on **Pix**.
+-   I created a static Payload generator. The guest copies the code, pays in their bank, and reports it on the site.
+-   *Trade-off:* Confirmation is not automatic (webhook), but the savings on fees make up for the manual validation.
 
-### 3. Segurança no Frontend (Client-Side)
-**Problema:** Como usar o Supabase no front sem expor chaves de administração?
-**Solução:**
--   Uso apenas da `ANON_KEY` (chave pública limitada) do Supabase.
--   Criação do padrão `config.js` (ignorado pelo Git) para injetar as credenciais em `window.CONFIG`. Isso permite que o código seja público no GitHub sem vazar dados sensíveis.
+### 3. Frontend (Client-Side) Security
+**Problem:** How to use Supabase on the front end without exposing admin keys?
+**Solution:**
+-   Use of only the Supabase `ANON_KEY` (limited public key).
+-   Creation of the `config.js` pattern (ignored by Git) to inject the credentials into `window.CONFIG`. This allows the code to be public on GitHub without leaking sensitive data.
 
 ---
 
-## 🗄 Estrutura do Banco de Dados (Supabase)
+## 🗄 Database Structure (Supabase)
 
-A tabela principal `presentes` foi estruturada para suportar a lógica híbrida de itens únicos e cotas.
+The main table `presentes` was structured to support the hybrid logic of single items and shares.
 
 ```
 CREATE TABLE presentes (
   id BIGINT GENERATED BY DEFAULT AS IDENTITY PRIMARY KEY,
   nome_item TEXT NOT NULL,
-  preco NUMERIC(10,2) NOT NULL, -- Preço TOTAL do item/combo
+  preco NUMERIC(10,2) NOT NULL, -- TOTAL price of the item/combo
   imagem_url TEXT,
-  total_cotas INTEGER DEFAULT 1, -- Se 1 = Item Único. Se > 1 = Sistema de Cotas.
+  total_cotas INTEGER DEFAULT 1, -- If 1 = Single Item. If > 1 = Share System.
   cotas_vendidas INTEGER DEFAULT 0,
   created_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now())
 );
 ```
 
-Tabela `contribuicoes` feita para armazenar os dados de presentes dos convidados
+Table `contribuicoes` created to store the guests' gift data
 
 ```
 
@@ -97,5 +97,9 @@ CREATE TABLE IF NOT EXISTS public.contribuicoes (
 );
 ```
 
-# 📄 Licença
-Este projeto foi desenvolvido para fins pessoais e educacionais. Sinta-se livre para usar a lógica como base para seus estudos ou para o seu próprio evento!
+# 📄 License
+This project was developed for personal and educational purposes. Feel free to use the logic as a basis for your studies or for your own event!
+
+---
+
+Note: I kept the SQL code, table names, and column names (e.g., `presentes`, `cotas_vendidas`) unchanged so they still match your database. I also preserved the empty bullet under "Integrations" exactly as in the original.
